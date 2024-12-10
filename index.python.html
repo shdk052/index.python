@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"><head></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לימוד Python | המדריך המקיף</title>
+   
+    <!-- הוספת פונטים מ-Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&amp;display=swap" rel="stylesheet">
+    <!-- הוספת Font Awesome לאייקונים -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <link rel="icon" href="https://chat.google.com/u/0/api/get_attachment_url?url_type=FIFE_URL&amp;content_type=image%2Fpng&amp;attachment_token=AOo0EEUSfyRD6uSMpY6i19hTpWWfBE6yNyQ%2Fox6ieytT2JhC0vftwMl2uow%2BbAvgwLKOi4S2x96VB4%2BKjPPXZ3ii8NQp8oRu6nVw2b3iHz4PJFkDsiY%2FZosYjPSnVMlal0GyS71M4JxN9sOYgYpXB9xfTKvhuNGLXt8QBrVOKzqxcfNoB6craT9c%2BfAqjsPNxAPB0GtKxtPdlxKvewgji8AxrBt9FDQ2qvFM4yYWGqUDGNuxBF6MsKo6H5eIG%2FnM8IUhkr6apHSOsyFjiaPPUd1jeiN3d0zWbmFTL5dd967X6RGKReJL%2Fnx9baptw29HDi20rQfgRQekZuxGTh%2BV1O5bHLBqQiGFecWzOByn8kYT6k%2Ff5YplILFmZJMCuTIMXg9%2B6cuF5yZV2s8wXF%2F9UDRhYy1nw3z%2F6cVz96UZEJHCABo8z1xbMJYLPUTWFJ%2BwaxZxwO9eZl4Gzf%2B3So%2BjB5FCATmzR4L2RhLvtbEwZJsaWbIru%2FoLRcyPpceDQxTWy6Ae7aSo%2Fno73cKDtOMdzGXpXaEz%2Fz%2FvPNJgxCxt4T9uDcORU5rjFk2BUGFJAtlDhYTRXpWiMDq9MV3s9XD5w6qB4bNjQC7L50zW&amp;sz=w512 ">
+    <style>
+        :root {
+            --primary-color: #ffb347;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #e2ea52;
+            --background-dark: #0f172a;
+            --background-light: #1e293b;
+            --text-light: #f8fafc;
+            --text-gray: #b8c4cb;
+            --card-bg: #29364c;
+            --code-bg: #020617;
+            --success-color: #22c55e;
+            --warning-color: #eab308;
+            --error-color: #ef4444;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+        }
+
+
+        /* Header & Navigation - משופר */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 0.5rem;
+        }
+
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+
+        .nav-logo i {
+            font-size: 1.8rem;
+        }
+
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            list-style: none;
+        }
+
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .nav-links a i {
+            font-size: 1.1rem;
+        }
+
+
+        /* Hero Section - משופר */
+        .hero {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
+                        url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1600') center/cover;
+            border-radius: 1rem;
+        }
+
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-out;
+        }
+
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            animation: slideUp 1s ease-out;
+        }
+
+
+        /* Cards & Sections - משופר */
+        .section {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+
+        .section h2 i {
+            font-size: 1.8rem;
+        }
+
+
+        /* Features Grid - חדש */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+
+        .feature {
+            background: var(--background-dark);
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+
+        .feature h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+
+        /* Code Blocks - משופר */
+        .code-block {
+            background: var(--code-bg);
+            padding: 2rem;
+            border-radius: 0.8rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            direction: ltr;
+            font-family: 'Fira Code', monospace;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
+        .code-block::before {
+            content: 'Python';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #000000;
+        }
+
+
+        /* Tags Grid - משופר */
+        .tag-card {
+            background: var(--background-dark);
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .tag-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+
+        .tag-card:hover::before {
+            opacity: 0.1;
+        }
+
+
+        .tag-card strong {
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Responsive Design - משופר */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+
+            .nav-links a {
+                width: 100%;
+                justify-content: center;
+            }
+
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+
+            .section {
+                padding: 1.5rem;
+            }
+
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-dark: #0f172a;
+                --card-bg: #1e293b;
+            }
+
+        }
+
+        /* הוספת סגנון לכפתור ההעתקה */
+        .copy-button {
+            position: absolute;
+            top: 1rem;
+            right: 6rem;
+            background: var(--primary-color);
+            color: var(--background-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copy-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .copy-button i {
+            font-size: 0.875rem;
+        }
+
+        /* עדכון למיקום התגית Python */
+        .code-block {
+            position: relative;
+        }
+    </style>
+
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling;
+            const code = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                // שינוי הטקסט בכפתור זמנית
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> עתק!';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('שגיאה בהעתקה:', err);
+                button.innerHTML = '<i class="fas fa-times"></i> ש��יאה';
+            });
+        }
+    </script>
+
+</head>
+<body>
+
+    <main class="main">
+        <section class="hero">
+            <h1>המדריך המקיף ללימוד Python</h1>
+            <p>בואו נלמד יחד את שפת התכנות הפופולרית ביותר. Python היא שפה קלה ללימוד, רבת עוצמה ומושלמת למתחילים.</p>
+        </section>
+
+
+        <section id="intro" class="section">
+            <h2><i class="fas fa-book"></i> מבוא ל-Python</h2>
+            <p>
+                Python היא שפת תכנות ברמה גבוהה, קלה ללימוד ורבת שימושים.
+                היא משמשת לפיתוח אפליקציות, בינה מלאכותית, מדע נתונים, אוטומציה ועוד.
+            </p>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3><i class="fas fa-globe"></i> קהילה עולמית</h3>
+                    <p>Python נהנית מקהילה גדולה ותומכת, עם אינספור ספריות וכלים זמינים</p>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-rocket"></i> קלה ללימוד</h3>
+                    <p>תחביר פשוט וברור שמאפשר למתחילים ל��תחיל לכתוב קוד במהירות</p>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-cogs"></i> רב-תכליתית</h3>
+                    <p>מתאימה למגוון רחב של יישומים - מפיתוח אפליקציות ותוכנות ועד בינה מלאכותית</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="structure" class="section">
+            <h2><i class="fas fa-code"></i> התוכנית הראשונה ב-Python</h2>
+            <p>
+                בואו נתחיל עם התוכנית הבסיסית ביותר ב-Python - הדפסת "Hello World":
+            </p>
+            <div class="code-block">
+                <button class="copy-button" onclick="copyCode(this)">
+                    <i class="fas fa-copy"></i> העתק קוד
+                </button>
+                <pre>print("Hello, World!")
+
+# נוכל גם להדפיס בעברית
+print("שלום עולם!")</pre>
+            </div>
+        </section>
+
+
+        <section id="basics" class="section">
+            <h2><i class="fas fa-cubes"></i> יסודות השפה</h2>
+            <p>בואו נכיר את המושגים הבסיסיים בפייתון:</p>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3><i class="fas fa-box"></i> משתנים</h3>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre># הגדרת משתנים בסיסיים בפייתון
+name = "יוסי"        # משתנה מסוג מחרוזת (טקסט)
+age = 25             # משתנה מסוג מספר שלם
+height = 1.75        # משתנה מסוג מספר עשרוני
+is_student = True    # משתנה מסוג בוליאני (אמת/שקר)</pre>
+                    </div>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-list"></i> רשימות</h3>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre># רשימות מאפשרות לנו לשמור כמה ערכים במשתנה אחד
+fruits = ["תפוח", "בננה", "תפוז"]  # רשימת מחרוזות
+numbers = [1, 2, 3, 4, 5]           # רשימת מספרים
+
+# הוספת פריט חדש לסוף הרשימה
+fruits.append("אבטיח")</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="control" class="section">
+            <h2><i class="fas fa-random"></i> מבני בקרה</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3><i class="fas fa-code-branch"></i> תנאים</h3>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre># תנאי if-else בודק האם אדם בגיר או קטין
+age = 18
+if age >= 18:
+    print("בגיר")    # יודפס אם הגיל 18 ומעלה
+else:
+    print("קטין")    # יודפס אם הגיל מתחת ל-18</pre>
+                    </div>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-sync"></i> לולאות</h3>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre># לולאת for מריצה קוד מספר פעמים
+for i in range(5):    # תרוץ 5 פעמים (0 עד 4)
+    print(i)
+
+# לולאת while רצה כל עוד התנאי מתקיים
+count = 0
+while count < 5:      # תרוץ כל עוד count קטן מ-5
+    print(count)
+    count += 1        # מגדיל את count ב-1 בכל סיבוב</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="libraries" class="section">
+            <h2><i class="fas fa-puzzle-piece"></i> ספריות בפייתון</h2>
+            <p>
+                ספריות בפייתון הן אוספים של קוד מוכן מראש שמאפשרות לנו להשתמש בפונקציות מתקדמות בקלות.
+                כדי להשתמש בספרייה, אנחנו צריכים לייבא אותה בעזרת הפקודה import:
+            </p>
+            <div class="code-block">
+                <button class="copy-button" onclick="copyCode(this)">
+                    <i class="fas fa-copy"></i> העתק קוד
+                </button>
+                <pre># ייבוא ספריות נפוצות
+import random  # ספרייה ליצירת מספרים אקראיים
+import math    # ספרייה לפעולות מתמטיות
+
+# דוגמאות לשימוש
+random_number = random.randint(1, 10)  # מספר אקראי בין 1 ל-10
+sqrt_result = math.sqrt(16)            # שורש ריבועי של 16
+
+print(f"מספר אקראי: {random_number}")
+print(f"שורש ריבועי של 16: {sqrt_result}")</pre>
+            </div>
+        </section>
+
+
+        <section id="functions" class="section">
+            <h2><i class="fas fa-function"></i> פונקציות</h2>
+            <p>פונקציות הן דרך נוחה לארגן קוד שחוזר על עצמו. במקום לכתוב את אותו קוד שוב ושוב, אנחנו כותבים אותו פעם אחת בתוך פונקציה:</p>
+            <div class="code-block">
+                <button class="copy-button" onclick="copyCode(this)">
+                    <i class="fas fa-copy"></i> העתק קוד
+                </button>
+                <pre># פונקציה פשוטה שמקבלת שם ומחזירה ברכה
+def say_hello(name):
+    return f"שלום {name}! נעים להכיר"
+
+# שימוש בפונקציה
+greeting = say_hello("דני")
+print(greeting)  # יודפס: שלום דני! נעים להכיר
+
+# פונקציה שמחשבת סכום של שני מספרים
+def add_numbers(x, y):
+    return x + y
+
+result = add_numbers(5, 3)
+print(f"5 + 3 = {result}")  # יודפס: 5 + 3 = 8</pre>
+            </div>
+        </section>
+
+
+        <section id="turtle-section" class="section">
+            <h2><i class="fas fa-turtle"></i> ספריית Turtle - ציור גרפי בפייתון</h2>
+            <p>
+                ספריית Turtle היא כלי מצוין ללמידת תכנות באופן ויזואלי. באמצעותה נוכל לצייר צורות וציורים על ידי שליטה ב"צב" וירטואלי שנע על המסך.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature">
+                    <h3><i class="fas fa-square"></i> צורות בסיסיות</h3>
+                    <p>נלמד כיצד לצייר צורות בסיסיות כמו ריבוע ומשולש:</p>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre>
+import turtle
+
+# יצירת צב חדש
+t = turtle.Turtle()
+
+# ציור ריבוע
+for _ in range(4):
+    t.forward(100)  # התקדם 100 צעדים
+    t.right(90)    # פנה ימינה ב-90 מעלות
+
+# ציור משולש
+for _ in range(3):
+    t.forward(100)  # התקדם 100 צעדים
+    t.right(120)   # פנה ימינה ב-120 מעלות</pre>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3><i class="fas fa-paint-brush"></i> צבעים ומילוי</h3>
+                    <p>נלמד כיצד להוסיף צבעים ולמלא צורות:</p>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre>
+import turtle
+
+t = turtle.Turtle()
+
+# שינוי צבע העט והמילוי
+t.pencolor("blue")     # צבע הקו
+t.fillcolor("yellow")  # צבע המילוי
+
+# ציור מעגל מלא
+t.begin_fill()         # התחל מילוי
+t.circle(50)           # צייר מעגל ברדיוס 50
+t.end_fill()           # סיים מילוי</pre>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3><i class="fas fa-cog"></i> הגדרות מתקדמות</h3>
+                    <p>נלמד על הגדרות נוספות שיעזרו לנו בציור:</p>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre>
+import turtle
+
+t = turtle.Turtle()
+
+# הגדרות בסיסיות
+t.speed(10)        # מהירות הציור (1-10)
+t.pensize(3)       # עובי העט
+t.shape("turtle")  # צורת הסמן
+
+# הרמת והורדת העט
+t.penup()          # הרם את העט
+t.goto(100, 100)   # זוז למיקום חדש
+t.pendown()        # הורד את העט</pre>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3><i class="fas fa-star"></i> פרויקט לדוגמה</h3>
+                    <p>נשלב את כל מה שלמדנו ליצירת כוכב צבעוני:</p>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre>
+import turtle
+
+def draw_colorful_star():
+    t = turtle.Turtle()
+    t.speed(10)
+    
+    # רשימת צבעים
+    colors = ["red", "orange", "yellow", "green", "blue"]
+    
+    # ציור כוכב צבעוני
+    for color in colors:
+        t.pencolor(color)
+        t.fillcolor(color)
+        t.begin_fill()
+        
+        for _ in range(5):
+            t.forward(100)
+            t.right(144)
+            
+        t.end_fill()
+        t.right(10)  # סיבוב קל ליצירת אפקט
+
+# הפעלת הפונקציה
+draw_colorful_star()</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tag-card">
+                <strong>טיפים חשובים:</strong>
+                <ul>
+                    <li>תמיד זכרו לייבא את הספרייה בתחילת הקוד: <code>import turtle</code></li>
+                    <li>השתמשו ב-<code>t.clear()</code> כדי לנקות את המסך</li>
+                    <li>השתמשו ב-<code>t.reset()</code> כדי לאפס את מצב הצב</li>
+                    <li>השתמשו ב-<code>turtle.done()</code> בסוף התוכנית כדי שהחלון לא ייסגר</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tkinter" class="section">
+            <h2><i class="fas fa-window-maximize"></i> ספריית Tkinter - יצירת ממשק משתמש גרפי</h2>
+            <p>
+                Tkinter היא ספריית ברירת המחדל של Python ליצירת ממשק משתמש גרפי (GUI). 
+                באמצעותה ניתן ליצור חלונות, כפתורים, תיבות טקסט ועוד אלמנטים גרפיים.
+            </p>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3><i class="fas fa-desktop"></i> יצירת חלון בסיסי</h3>
+                    <p>נלמד כיצד ליצור חלון פשוט עם כותרת:</p>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre>
+import tkinter as tk
+
+# יצירת חלון ראשי
+window = tk.Tk()
+window.title("החלון הראשון שלי")
+window.geometry("400x300")  # גודל החלון
+
+# הוספת תווית טקסט
+label = tk.Label(window, text="שלום עולם!")
+label.pack()
+
+# הפעלת החלון
+window.mainloop()</pre>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3><i class="fas fa-mouse-pointer"></i> כפתורים ואירועים</h3>
+                    <p>נלמד כיצד להוסיף כפתורים ולטפל בלחיצות עליהם:</p>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre>
+import tkinter as tk
+
+def button_click():
+    label.config(text="לחצת על הכפתור!")
+
+window = tk.Tk()
+window.title("כפתורים ואירועים")
+
+# יצירת תווית
+label = tk.Label(window, text="לחץ על הכפתור")
+label.pack(pady=20)
+
+# יצירת כפתור
+button = tk.Button(window, text="לחץ כאן", command=button_click)
+button.pack()
+
+window.mainloop()</pre>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3><i class="fas fa-keyboard"></i> קלט משתמש</h3>
+                    <p>נלמד כיצד לקבל קלט מהמשתמש:</p>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre>
+import tkinter as tk
+
+def show_name():
+    name = entry.get()
+    result_label.config(text=f"שלום {name}!")
+
+window = tk.Tk()
+window.title("קלט משתמש")
+
+# תיבת טקסט לקלט
+entry = tk.Entry(window)
+entry.pack(pady=10)
+
+# כפתור לשליחה
+button = tk.Button(window, text="שלח", command=show_name)
+button.pack(pady=5)
+
+# תווית להצגת התוצאה
+result_label = tk.Label(window, text="")
+result_label.pack(pady=10)
+
+window.mainloop()</pre>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <h3><i class="fas fa-th"></i> סידור אלמנטים</h3>
+                    <p>נלמד על שיטות שונות לסידור אלמנטים בחלון:</p>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> העתק קוד
+                        </button>
+                        <pre>
+import tkinter as tk
+
+window = tk.Tk()
+window.title("סידור אלמנטים")
+
+# שימוש ב-Grid
+tk.Label(window, text="שם:").grid(row=0, column=0, padx=5, pady=5)
+tk.Entry(window).grid(row=0, column=1, padx=5, pady=5)
+
+tk.Label(window, text="גיל:").grid(row=1, column=0, padx=5, pady=5)
+tk.Entry(window).grid(row=1, column=1, padx=5, pady=5)
+
+# שימוש ב-Pack
+frame = tk.Frame(window)
+frame.grid(row=2, column=0, columnspan=2, pady=10)
+
+tk.Button(frame, text="שמור").pack(side=tk.LEFT, padx=5)
+tk.Button(frame, text="בטל").pack(side=tk.LEFT, padx=5)
+
+window.mainloop()</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tag-card">
+                <strong>טיפים חשובים:</strong>
+                <ul>
+                    <li>תמיד זכרו להשתמש ב-<code>mainloop()</code> בסוף התוכנית</li>
+                    <li>השתמשו ב-<code>pack()</code>, <code>grid()</code> או <code>place()</code> לסידור אלמנטים</li>
+                    <li>הקפידו על שמות משתנים ברורים לאלמנטים</li>
+                    <li>השתמשו ב-<code>pady</code> ו-<code>padx</code> ליצירת מרווחים</li>
+                </ul>
+            </div>
+        </section>
+
+
+        
+
+    </main>
+
+    
+
+
+
+</body></html>
+
+
+
